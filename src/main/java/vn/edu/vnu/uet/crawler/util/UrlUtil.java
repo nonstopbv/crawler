@@ -3,7 +3,6 @@ package vn.edu.vnu.uet.crawler.util;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.jsoup.Jsoup;
@@ -14,9 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import vn.edu.vnu.uet.crawler.config.Site;
-import vn.edu.vnu.uet.crawler.http.HttpClient;
-import vn.edu.vnu.uet.crawler.http.HttpConnectionManager;
-import vn.edu.vnu.uet.crawler.http.HttpFetchResult;
+import vn.edu.vnu.uet.crawler.fetcher.ICrawler;
 import vn.edu.vnu.uet.crawler.http.URL;
 
 /**
@@ -32,7 +29,7 @@ public abstract class UrlUtil {
 
 	private static final Logger logger = LoggerFactory.getLogger(UrlUtil.class);
 
-	public static HttpClient httpClient = new HttpClient();
+	
 
 	private static final String URL_PREFIX = "/";
 
@@ -44,7 +41,7 @@ public abstract class UrlUtil {
 		while (retry++ < 5) {
 			try {
 				doc = Jsoup.connect(url)
-						.userAgent(HttpConnectionManager.USER_AGENT)
+						.userAgent(ICrawler.USER_AGENT)
 						.timeout(10000).get();
 				if (doc != null) {
 					return doc;
@@ -89,7 +86,7 @@ public abstract class UrlUtil {
 		return urlSet;
 	}
 
-
+/*
 	private static Set<URL> getAbsoluteURLsByRegex(URL url,
 			String elementIdOrRegex) throws Exception {
 		Set<URL> urlSet = new HashSet<URL>();
@@ -113,7 +110,7 @@ public abstract class UrlUtil {
 			}
 		}
 		return urlSet;
-	}
+	}*/
 
 
 	public static String fixAbsoluteLink(String path, String hostAndPath,
@@ -140,7 +137,7 @@ public abstract class UrlUtil {
 	}
 
 
-	public static Set<URL> extracting(URL url, String queryOrRegex) {
+/*	public static Set<URL> extracting(URL url, String queryOrRegex) {
 		Set<URL> result = null;
 		Document doc = null;
 		
@@ -158,5 +155,5 @@ public abstract class UrlUtil {
 		}
 		return result;
 	}
-
+*/
 }

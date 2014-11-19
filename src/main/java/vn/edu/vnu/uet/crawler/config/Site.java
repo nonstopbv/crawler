@@ -1,15 +1,6 @@
 package vn.edu.vnu.uet.crawler.config;
 
-
-
-/**
- * 
- * Store configuration for ICrawler
- * 
- * 
- *
- */
-public class Site {	
+public class Site {
 
 	// default charset "UTF-8"
 	private String defaultCharset;
@@ -19,37 +10,32 @@ public class Site {
 
 	private String elementSelector;
 	// the max page number.
-	//private int maxPageNo;
+	// private int maxPageNo;
 
 	// thread name.
 	private String name;
 
 	// next page url regex.
-	//private String nextPageRegex;
+	// private String nextPageRegex;
 
 	// target url to crawl
 	private String url;
-    private String urlRegex;
+	private String urlRegex;
+
 	public Site() {
 		this.name = "null";
 		this.defaultCharset = "UTF-8";
 		this.url = "";
 		this.delay = 1000L;
-		//this.nextPageRegex = "";
+		// this.nextPageRegex = "";
 		this.elementSelector = "body";
-		//this.maxPageNo = 1;
+		// this.maxPageNo = 1;
 
 	}
 
-	 /**
-     * new a Site
-     *
-     * @return new site
-     */
-    public static Site me() {
-        return new Site();
-    }
-	
+	public static Site me() {
+		return new Site();
+	}
 
 	public String getDefaultCharset() {
 		return defaultCharset;
@@ -59,20 +45,21 @@ public class Site {
 		return delay;
 	}
 
-	
 	/*
-	public int getMaxPageNo() {
-		return maxPageNo;
-	}*/
+	 * public int getMaxPageNo() {
+	 * return maxPageNo;
+	 * }
+	 */
 
 	public String getName() {
 		return name;
 	}
-/*
-	public String getNextPageRegex() {
-		return nextPageRegex;
-	}
-*/
+
+	/*
+	 * public String getNextPageRegex() {
+	 * return nextPageRegex;
+	 * }
+	 */
 	public String getUrl() {
 		return url;
 	}
@@ -87,8 +74,7 @@ public class Site {
 		return this;
 	}
 
-	
-/**
+	/**
 	 * @return the elementSelector
 	 */
 	public String getElementSelector() {
@@ -96,7 +82,8 @@ public class Site {
 	}
 
 	/**
-	 * @param elementSelector the elementSelector to set
+	 * @param elementSelector
+	 *            the elementSelector to set
 	 */
 	public Site setElementSelector(String elementSelector) {
 		this.elementSelector = elementSelector;
@@ -111,7 +98,8 @@ public class Site {
 	}
 
 	/**
-	 * @param urlRegex the urlRegex to set
+	 * @param urlRegex
+	 *            the urlRegex to set
 	 */
 	public Site setUrlRegex(String urlRegex) {
 		this.urlRegex = urlRegex;
@@ -119,21 +107,22 @@ public class Site {
 	}
 
 	/*
-	public Site setMaxPageNo(int maxPageNo) {
-		this.maxPageNo = maxPageNo;
-		return this;
-	}
-*/
+	 * public Site setMaxPageNo(int maxPageNo) {
+	 * this.maxPageNo = maxPageNo;
+	 * return this;
+	 * }
+	 */
 	public Site setName(String name) {
 		this.name = name;
 		return this;
 	}
-/*
-	public Site setNextPageRegex(String nextPageRegex) {
-		this.nextPageRegex = nextPageRegex;
-		return this;
-	}
-*/
+
+	/*
+	 * public Site setNextPageRegex(String nextPageRegex) {
+	 * this.nextPageRegex = nextPageRegex;
+	 * return this;
+	 * }
+	 */
 	public Site setUrl(String url) {
 		this.url = url;
 		return this;

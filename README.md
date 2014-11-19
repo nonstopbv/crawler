@@ -1,4 +1,0 @@
-crawler
-=======
-
-simple web crawler

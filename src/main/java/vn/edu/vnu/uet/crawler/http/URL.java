@@ -12,12 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * URL - Uniform Resource Locator (Immutable, ThreadSafe)
- * 
- * 
- *
- */
 public final class URL implements Serializable {
 
 	private static final long serialVersionUID = -1985165475234945635L;
@@ -130,7 +124,7 @@ public final class URL implements Serializable {
 	}
 
 	private volatile transient String full;
-	
+
 	private final String host;
 
 	private final Map<String, String> parameters;
