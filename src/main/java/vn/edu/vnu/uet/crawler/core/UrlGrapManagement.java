@@ -1,9 +1,9 @@
 package vn.edu.vnu.uet.crawler.core;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.Writer;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -13,9 +13,9 @@ import java.util.Queue;
 
 public class UrlGrapManagement {
 	private static final String folder = "data_urlgrap";
-	//private static final int bufferSize = 128;
-	private Writer fileInput;
-	private Writer fileOuput;
+	// private static final int bufferSize = 128;
+	private OutputStreamWriter fileInput;
+	private OutputStreamWriter fileOuput;
 
 	public class PrintThread extends Thread {
 
@@ -24,7 +24,6 @@ public class UrlGrapManagement {
 			while (true) {
 				try {
 					if (input.isEmpty() == false) {
-
 						fileInput.write(input.poll().toString() + "\n");
 
 					}
@@ -43,7 +42,6 @@ public class UrlGrapManagement {
 			}
 
 		}
-
 	}
 
 	public UrlGrapManagement(Config config) {
@@ -51,8 +49,8 @@ public class UrlGrapManagement {
 		try {
 			File fInput = new File(folder, config.getName() + "_input.txt");
 			File fOutput = new File(folder, config.getName() + "_output.txt");
-			fileInput = new FileWriter(fInput);
-			fileOuput = new FileWriter(fOutput);
+			fileInput = new OutputStreamWriter(new FileOutputStream(fInput));
+			fileOuput = new OutputStreamWriter(new FileOutputStream(fOutput));
 			new PrintThread().start();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,9 +67,19 @@ public class UrlGrapManagement {
 			this.edgeId = edgeId;
 		}
 
-		@Override
-		public String toString() {
-			return id + ": " + Arrays.toString(edgeId);
+		public String toString(String prefix) {
+			StringBuffer sb = new StringBuffer(String.format("$s %4d : ", prefix, id));
+			sb.append(String.format("%5d", edgeId[0]));
+			for (int i = 1; i < edgeId.length; i++) {
+				sb.append(",");
+				if (edgeId[0] < 0 && edgeId[i] > 0) {
+					sb.append(String.format("%5s", "+" + edgeId[i]));
+				} else {
+					sb.append(String.format("%5d", edgeId[i]));
+				}
+
+			}
+			return sb.toString();
 		}
 
 	}
