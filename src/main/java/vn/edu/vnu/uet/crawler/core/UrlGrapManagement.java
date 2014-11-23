@@ -1,9 +1,9 @@
 package vn.edu.vnu.uet.crawler.core;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -13,9 +13,9 @@ import java.util.Queue;
 
 public class UrlGrapManagement {
 	private static final String folder = "data_urlgrap";
-	private static final int bufferSize = 128;
-	private BufferedWriter fileInput;
-	private BufferedWriter fileOuput;
+	//private static final int bufferSize = 128;
+	private Writer fileInput;
+	private Writer fileOuput;
 
 	public class PrintThread extends Thread {
 
@@ -51,8 +51,8 @@ public class UrlGrapManagement {
 		try {
 			File fInput = new File(folder, config.getName() + "_input.txt");
 			File fOutput = new File(folder, config.getName() + "_output.txt");
-			fileInput = new BufferedWriter(new FileWriter(fInput), bufferSize);
-			fileOuput = new BufferedWriter(new FileWriter(fOutput), bufferSize);
+			fileInput = new FileWriter(fInput);
+			fileOuput = new FileWriter(fOutput);
 			new PrintThread().start();
 		} catch (Exception e) {
 			e.printStackTrace();
