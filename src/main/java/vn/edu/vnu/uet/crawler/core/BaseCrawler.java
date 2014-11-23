@@ -228,12 +228,11 @@ public abstract class BaseCrawler implements ICrawler {
 		return config;
 	}
 
-	@Override
+	
 	public int getTotalsToCrawl() {
 		return toCrawlTotals;
 	}
 
-	@Override
 	public boolean isFinished() {
 		return isFinished;
 	}

@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -67,8 +66,9 @@ public class UrlGrapManagement {
 			this.edgeId = edgeId;
 		}
 
-		public String toString(String prefix) {
-			StringBuffer sb = new StringBuffer(String.format("$s %4d : ", prefix, id));
+		@Override
+		public String toString() {
+			StringBuffer sb = new StringBuffer(String.format("%4d : ", id));
 			sb.append(String.format("%5d", edgeId[0]));
 			for (int i = 1; i < edgeId.length; i++) {
 				sb.append(",");
