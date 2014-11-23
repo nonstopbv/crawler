@@ -1,6 +1,6 @@
-package vn.edu.vnu.uet.crawler.config;
+package vn.edu.vnu.uet.crawler.core;
 
-public class Site {
+public class Config {
 
 	// default charset "UTF-8"
 	private String defaultCharset;
@@ -22,7 +22,7 @@ public class Site {
 	private String url;
 	private String urlRegex;
 
-	public Site() {
+	public Config() {
 		this.name = "null";
 		this.defaultCharset = "UTF-8";
 		this.url = "";
@@ -33,8 +33,8 @@ public class Site {
 
 	}
 
-	public static Site me() {
-		return new Site();
+	public static Config me() {
+		return new Config();
 	}
 
 	public String getDefaultCharset() {
@@ -64,12 +64,12 @@ public class Site {
 		return url;
 	}
 
-	public Site setDefaultCharset(String defaultCharset) {
+	public Config setDefaultCharset(String defaultCharset) {
 		this.defaultCharset = defaultCharset;
 		return this;
 	}
 
-	public Site setDelay(long delay) {
+	public Config setDelay(long delay) {
 		this.delay = delay;
 		return this;
 	}
@@ -85,7 +85,7 @@ public class Site {
 	 * @param elementSelector
 	 *            the elementSelector to set
 	 */
-	public Site setElementSelector(String elementSelector) {
+	public Config setElementSelector(String elementSelector) {
 		this.elementSelector = elementSelector;
 		return this;
 	}
@@ -101,7 +101,7 @@ public class Site {
 	 * @param urlRegex
 	 *            the urlRegex to set
 	 */
-	public Site setUrlRegex(String urlRegex) {
+	public Config setUrlRegex(String urlRegex) {
 		this.urlRegex = urlRegex;
 		return this;
 	}
@@ -112,7 +112,7 @@ public class Site {
 	 * return this;
 	 * }
 	 */
-	public Site setName(String name) {
+	public Config setName(String name) {
 		this.name = name;
 		return this;
 	}
@@ -123,7 +123,7 @@ public class Site {
 	 * return this;
 	 * }
 	 */
-	public Site setUrl(String url) {
+	public Config setUrl(String url) {
 		this.url = url;
 		return this;
 	}

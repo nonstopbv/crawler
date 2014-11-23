@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-package vn.edu.vnu.uet.crawler.fetcher;
+package vn.edu.vnu.uet.crawler.core;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -81,8 +81,7 @@ public class FileSystemOutput {
 		dir.delete();
 	}
 
-	public static void copy(File origin, File newfile)
-			throws FileNotFoundException, IOException {
+	public static void copy(File origin, File newfile) throws FileNotFoundException, IOException {
 		if (!newfile.getParentFile().exists()) {
 			newfile.getParentFile().mkdirs();
 		}
@@ -97,15 +96,13 @@ public class FileSystemOutput {
 		fos.close();
 	}
 
-	public static void writeFile(String filename, byte[] content)
-			throws FileNotFoundException, IOException {
+	public static void writeFile(String filename, byte[] content) throws FileNotFoundException, IOException {
 		FileOutputStream fos = new FileOutputStream(filename);
 		fos.write(content);
 		fos.close();
 	}
 
-	public static void writeFileWithParent(String filename, byte[] content)
-			throws FileNotFoundException, IOException {
+	public static void writeFileWithParent(String filename, byte[] content) throws FileNotFoundException, IOException {
 		File file = new File(filename);
 		File parent = file.getParentFile();
 		if (!parent.exists()) {
@@ -116,8 +113,7 @@ public class FileSystemOutput {
 		fos.close();
 	}
 
-	public static void writeFileWithParent(File file, String content)
-			throws FileNotFoundException, IOException {
+	public static void writeFileWithParent(File file, String content) throws FileNotFoundException, IOException {
 
 		File parent = file.getParentFile();
 		if (!parent.exists()) {

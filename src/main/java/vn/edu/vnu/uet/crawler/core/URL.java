@@ -1,4 +1,4 @@
-package vn.edu.vnu.uet.crawler.http;
+package vn.edu.vnu.uet.crawler.core;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -38,12 +38,6 @@ public final class URL implements Serializable {
 		}
 	}
 
-	/**
-	 * Validate the url string.
-	 * 
-	 * @param url
-	 * @return true is URL ,otherwise is not a URL
-	 */
 	public static boolean validate(String url) {
 		try {
 			new java.net.URI(url);
@@ -53,14 +47,6 @@ public final class URL implements Serializable {
 		return true;
 	}
 
-	/**
-	 * Parse url string
-	 * 
-	 * @param url
-	 *            URL string
-	 * @return URL instance
-	 * @see URL
-	 */
 	public static URL valueOf(String url) {
 		if (url == null || (url = url.trim()).length() == 0) {
 			throw new IllegalArgumentException("url == null");
@@ -81,8 +67,7 @@ public final class URL implements Serializable {
 				if (part.length() > 0) {
 					int j = part.indexOf('=');
 					if (j >= 0) {
-						parameters.put(part.substring(0, j),
-								part.substring(j + 1));
+						parameters.put(part.substring(0, j), part.substring(j + 1));
 					} else {
 						parameters.put(part, part);
 					}
@@ -93,8 +78,7 @@ public final class URL implements Serializable {
 		i = url.indexOf("://");
 		if (i >= 0) {
 			if (i == 0) {
-				throw new IllegalStateException("url missing protocol: \""
-						+ url + "\"");
+				throw new IllegalStateException("url missing protocol: \"" + url + "\"");
 			}
 			protocol = url.substring(0, i);
 			url = url.substring(i + 3);
@@ -103,8 +87,7 @@ public final class URL implements Serializable {
 			i = url.indexOf(":/");
 			if (i >= 0) {
 				if (i == 0) {
-					throw new IllegalStateException("url missing protocol: \""
-							+ url + "\"");
+					throw new IllegalStateException("url missing protocol: \"" + url + "\"");
 				}
 				protocol = url.substring(0, i);
 				url = url.substring(i + 1);
@@ -140,8 +123,7 @@ public final class URL implements Serializable {
 		this.parameters = null;
 	}
 
-	public URL(String protocol, String host, String path,
-			Map<String, String> parameters) {
+	public URL(String protocol, String host, String path, Map<String, String> parameters) {
 		this.protocol = protocol;
 		this.host = host;
 		this.path = path;
@@ -158,11 +140,9 @@ public final class URL implements Serializable {
 	}
 
 	public URL addParameter(String key, String value) {
-		if (key == null || key.length() == 0 || value == null
-				|| value.length() == 0) {
+		if (key == null || key.length() == 0 || value == null || value.length() == 0) {
 			return this;
 		}
-		// 如果没有修改，直接返回。
 		if (value.equals(getParameters().get(key))) { // value != null
 			return this;
 		}
@@ -179,19 +159,12 @@ public final class URL implements Serializable {
 		return addParameter(key, encode(value));
 	}
 
-	private void buildParameters(StringBuilder buf, boolean concat,
-			String[] parameters) {
+	private void buildParameters(StringBuilder buf, boolean concat, String[] parameters) {
 		if (getParameters() != null && getParameters().size() > 0) {
-			List<String> includes = (parameters == null
-					|| parameters.length == 0 ? null : Arrays
-					.asList(parameters));
+			List<String> includes = (parameters == null || parameters.length == 0 ? null : Arrays.asList(parameters));
 			boolean first = true;
-			for (Map.Entry<String, String> entry : new TreeMap<String, String>(
-					getParameters()).entrySet()) {
-				if (entry.getKey() != null
-						&& entry.getKey().length() > 0
-						&& (includes == null || includes.contains(entry
-								.getKey()))) {
+			for (Map.Entry<String, String> entry : new TreeMap<String, String>(getParameters()).entrySet()) {
+				if (entry.getKey() != null && entry.getKey().length() > 0 && (includes == null || includes.contains(entry.getKey()))) {
 					if (first) {
 						if (concat) {
 							buf.append("?");
@@ -202,8 +175,7 @@ public final class URL implements Serializable {
 					}
 					buf.append(entry.getKey());
 					buf.append("=");
-					buf.append(entry.getValue() == null ? "" : entry.getValue()
-							.trim());
+					buf.append(entry.getValue() == null ? "" : entry.getValue().trim());
 				}
 			}
 		}
@@ -300,11 +272,9 @@ public final class URL implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((host == null) ? 0 : host.hashCode());
-		result = prime * result
-				+ ((parameters == null) ? 0 : parameters.hashCode());
+		result = prime * result + ((parameters == null) ? 0 : parameters.hashCode());
 		result = prime * result + ((path == null) ? 0 : path.hashCode());
-		result = prime * result
-				+ ((protocol == null) ? 0 : protocol.hashCode());
+		result = prime * result + ((protocol == null) ? 0 : protocol.hashCode());
 		return result;
 	}
 

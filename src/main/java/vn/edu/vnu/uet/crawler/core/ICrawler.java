@@ -1,6 +1,5 @@
-package vn.edu.vnu.uet.crawler.fetcher;
+package vn.edu.vnu.uet.crawler.core;
 
-import vn.edu.vnu.uet.crawler.config.Site;
 
 /**
  * Interface for a Web Crawler
@@ -12,15 +11,9 @@ import vn.edu.vnu.uet.crawler.config.Site;
 public interface ICrawler {
 	public static String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11";
 
-	// public void crawl() throws RuntimeException;
-
-	public Site getConfig();
-
-	// public Set<URL> getListPageURLs() throws RuntimeException;
+	public Config getConfig();
 
 	public Parser getParser();
-
-	// public Set<URL> getTargetPageURLs() throws RuntimeException;
 
 	public int getTotalsToCrawl();
 

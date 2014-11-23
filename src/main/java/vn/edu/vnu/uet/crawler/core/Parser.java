@@ -1,4 +1,4 @@
-package vn.edu.vnu.uet.crawler.fetcher;
+package vn.edu.vnu.uet.crawler.core;
 
 import org.jsoup.nodes.Document;
 
